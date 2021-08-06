@@ -13,6 +13,15 @@ public class LoginPage {
 	@FindBy(xpath="")
 	public WebElement userName;
 
+	@FindBy(css="[id*=nav-link-accountList]")
+	public WebElement signIn;
+
+	@FindBy(xpath="//h1[contains(text(),'Sign-In')]")
+	public WebElement signInPage;
+
+	@FindBy(css="span[class='nav-action-inner']")
+	public WebElement signInButton;
+
 	WaitHelper waitHelper;
 	
 	public LoginPage(WebDriver driver){
@@ -24,6 +33,17 @@ public class LoginPage {
 	
 	public void enterUserName(String userName){
 		this.userName.sendKeys(userName);
+	}
+	public void  clickOnSignIn(){
+		this.signIn.click();
+	}
+	public void  clickVisibleOnSignIn(){
+		this.signInButton.click();
+	}
+
+
+	public boolean verifySignInPage(){
+		return this.signInPage.isDisplayed();
 	}
 	
 
