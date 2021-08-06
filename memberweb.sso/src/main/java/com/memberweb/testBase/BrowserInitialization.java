@@ -17,7 +17,7 @@ public class BrowserInitialization {
 
     public WebDriver getdriver(){
         if (driver == null){
-            return this.selectBrowser("chrome");
+            return this.driver;
         }else{
             return driver;
         }

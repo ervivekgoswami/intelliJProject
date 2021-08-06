@@ -21,7 +21,7 @@ public class SSOloginStepsCode extends BrowserInitialization {
     }
     public void hoverSignIn(){
         homePage.clickOnSignIn();
-        waitHelper.WaitForElement(homePage.signInButton,3);
+        //waitHelper.WaitForElement(homePage.signInButton,3);
         homePage.clickVisibleOnSignIn();
     }
     public void verifySignInPageAmaZon(){
