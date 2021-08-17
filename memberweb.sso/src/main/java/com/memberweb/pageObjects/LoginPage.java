@@ -6,20 +6,22 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.Locale;
+
 public class LoginPage {
 	
 	private WebDriver driver;
-	
-	@FindBy(xpath="")
-	public WebElement userName;
 
-	@FindBy(css="[id*=nav-link-accountList]")
-	public WebElement signIn;
+	@FindBy(css="a[data-gps-track='login.click']")
+	public WebElement homePageLoginButton;
 
-	@FindBy(xpath="//h1[contains(text(),'Sign-In')]")
-	public WebElement signInPage;
+	@FindBy(css="input[id='email']")
+	public WebElement username;
 
-	@FindBy(css="span[class='nav-action-inner']")
+	@FindBy(css="input[id='passwor']")
+	public WebElement password;
+
+	@FindBy(css="button")
 	public WebElement signInButton;
 
 	WaitHelper waitHelper;
@@ -30,20 +32,20 @@ public class LoginPage {
 		waitHelper = new WaitHelper(driver);
 		//waitHelper.WaitForElement(userName, 60);
 	}
-	
-	public void enterUserName(String userName){
-		this.userName.sendKeys(userName);
+
+	public void clickHomePageLogin(){
+		this.homePageLoginButton.click();
 	}
-	public void  clickOnSignIn(){
-		this.signIn.click();
-	}
-	public void  clickVisibleOnSignIn(){
-		this.signInButton.click();
+	public void  clickVisibleOnSignIn(String text){
+		String getButtonText = this.signInButton.getText();
+		if(getButtonText.toLowerCase().equals(text)){
+			this.signInButton.click();
+		}
 	}
 
-
-	public boolean verifySignInPage(){
-		return this.signInPage.isDisplayed();
+	public void usernameAndPassword(String uName, String password){
+		this.username.sendKeys(uName);
+		this.password.sendKeys(password);
 	}
 	
 

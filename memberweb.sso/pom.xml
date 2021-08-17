@@ -18,8 +18,9 @@
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
-			<version>3.141.59</version>
+			<version>3.11.0</version>
 		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
 		<dependency>
 			<groupId>io.cucumber</groupId>
@@ -54,33 +55,18 @@
 			<version>5.5.4</version>
 		</dependency>
 
-
+		<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-plugin -->
 		<dependency>
-			<groupId>info.cukes</groupId>
-			<artifactId>cucumber-picocontainer</artifactId>
-			<version>1.2.5</version>
-			<scope>test</scope>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-surefire-plugin</artifactId>
+			<version>3.0.0-M4</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
 		<dependency>
-			<groupId>com.vimalselvam</groupId>
-			<artifactId>cucumber-extentsreport</artifactId>
-			<version>3.0.2</version>
-		</dependency>
-
-
-		<dependency>
-			<groupId>tech.grasshopper</groupId>
-			<artifactId>extentreports-cucumber5-adapter</artifactId>
-			<version>1.5.1</version>
-		</dependency>
-
-
-		<!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
-		<dependency>
-			<groupId>com.aventstack</groupId>
-			<artifactId>extentreports</artifactId>
-			<version>5.0.8</version>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>3.8.1</version>
 		</dependency>
 
 	</dependencies>
@@ -90,7 +76,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.22.0</version>
+				<version>3.0.0-M4</version>
 				<configuration>
 					<testFailureIgnore>true</testFailureIgnore>
 				</configuration>
@@ -108,10 +94,10 @@
 			<plugin>
 				<groupId>net.masterthought</groupId>
 				<artifactId>maven-cucumber-reporting</artifactId>
-				<version>5.3.0</version>
+				<version>5.5.4</version>
 				<executions>
 					<execution>
-						<id>execution</id>
+						<id>report</id>
 						<phase>test</phase>
 						<goals>
 							<goal>generate</goal>
@@ -120,10 +106,13 @@
 							<projectName>MemberSSO</projectName>
 							<skip>false</skip>
 							<buildNumber>1</buildNumber>
-							<parallelTesting>false</parallelTesting>
-							<outputDirectory>${project.build.directory}/cucumber-reports/advance-reports</outputDirectory>
-							<inputDirectory>${project.build.directory}/cucumber-reports/cucumber.json</inputDirectory>
+							<outputDirectory>${project.build.directory}</outputDirectory>
+							<inputDirectory>${project.build.directory}</inputDirectory>
+							<checkBuildResult>true</checkBuildResult>
 							<jsonFiles>
+								<mergeFeaturesWithRetest>true</mergeFeaturesWithRetest>
+								<mergeFeaturesById>true</mergeFeaturesById>
+								<skipEmptyJSONFiles>true</skipEmptyJSONFiles>
 								<param>**/*.json</param>
 							</jsonFiles>
 						</configuration>

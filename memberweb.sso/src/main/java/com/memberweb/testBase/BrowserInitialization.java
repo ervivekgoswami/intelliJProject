@@ -9,19 +9,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class BrowserInitialization {
-    public WebDriver driver;
-    public String url = "https://www.amazon.in/";
-    public BrowserInitialization(){
-        this.selectBrowser("chrome");
-    }
+    public static WebDriver driver;
+    public String url = "https://stackoverflow.com/";
 
-    public WebDriver getdriver(){
-        if (driver == null){
-            return this.driver;
-        }else{
-            return driver;
-        }
-    }
 
     public WebDriver selectBrowser(String browser) {
         if (System.getProperty("os.name").toLowerCase().contains(OS.WINDOW.name().toLowerCase())) {
@@ -29,7 +19,7 @@ public class BrowserInitialization {
                 System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/test/resources/drivers/chromedriver.exe");
                 driver = new ChromeDriver();
                 driver.manage().window().maximize();
-                //driver.get(url);
+                driver.get(url);
             } else if (browser.equalsIgnoreCase(Browsers.FIREFOX.name())) {
                 System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "/src/test/resources/drivers/geckodriver.exe");
                 driver = new FirefoxDriver();

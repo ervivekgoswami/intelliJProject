@@ -1,29 +1,35 @@
 package com.memberweb.utilities;
+
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import org.apache.log4j.Logger;
+
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 
 import com.memberweb.enums.Browsers;
 import com.memberweb.testBase.BrowserInitialization;
 
-public class hooks {
+public class Hooks {
 
-    BrowserInitialization browserInit;
-
-    Logger log = LoggerHelper.getLogger(hooks.class);
+  
+BrowserInitialization browserInit;
+Logger log = LoggerHelper.getLogger(Hooks.class);
 
     @Before
     public void initializeTest() {
-        BrowserInitialization browserInit = new BrowserInitialization();
+    	System.out.println("Running Before Hook"); 
+    	browserInit = new BrowserInitialization();
         browserInit.selectBrowser(Browsers.CHROME.name());
+
     }
 
     @After
     public void endTest(Scenario scenario) {
+        System.out.println("Running After Hook");
         if (scenario.isFailed()) {
 
             try {
@@ -43,6 +49,7 @@ public class hooks {
             }
 
         }
-        browserInit.getdriver().close();
+        BrowserInitialization.driver.quit();
+       
     }
 }

@@ -8,33 +8,30 @@ import io.cucumber.java.en.When;
 public class SSOloginSteps {
     SSOloginStepsCode ssologinStepsCode = new SSOloginStepsCode();
 
-    @Given("^User opens Test harness page \"([^\"]*)\"$")
+    @Given("^User opens stackoverflow page \"([^\"]*)\"$")
     public void user_verifies_Test_harness_page_is_opened(String url) {
-        ssologinStepsCode.openUrl(url);
-        ssologinStepsCode.verifyUrl(url);
+        //ssologinStepsCode.openUrl(url);
+        ssologinStepsCode.verifyUrlAndClickLogin(url);
     }
-    @When("^User hovers mouse over sign in button$")
-    public void hoverMouse() {
-        ssologinStepsCode.hoverSignIn();
+
+    @Given("^User enters username \"([^\"]*)\" and password \"([^\"]*)\" login page$")
+    public void enterUserNameAndPassword(String username, String password) {
+        ssologinStepsCode.enterUsenameAndPassword(username,password);
     }
+
     @Then("^User verifies sign in button is displayed$")
     public void user_verifies_text_fields_are_populated() {
         ssologinStepsCode.verifySignInPageAmaZon();
     }
+
     @When("^User clicks on \"([^\"]*)\" button$")
-    public void encryptButtonClickHomePage(String buttonText) throws InterruptedException {
-        ssologinStepsCode.clickEncryptButton(buttonText);
+    public void ButtonClickLogin(String buttonText) throws InterruptedException {
+        ssologinStepsCode.clickLoginButton(buttonText);
     }
-    @When("^User is navigated to \"([^\"]*)\" page successfully$")
-    public void user_is_navigated_to_page_successfully(String dashbordText) throws Throwable {
-        ssologinStepsCode.verifyNewWindowOpened(dashbordText);
+    
+    @When("^User clicks on homepage button$")
+    public void ButtonClickHomePage() throws InterruptedException {
+        ssologinStepsCode.clickHomePageLoginButton();
     }
-    @When("^User enters text \"([^\"]*)\" in \"([^\"]*)\" textbox$")
-    public void enterTextInTextBox(String textToEnter, String textBoxName) {
-        ssologinStepsCode.enterText(textToEnter,textBoxName);
-    }
-    @When("^User selects dropdown option \"([^\"]*)\" for Content Area$")
-    public void selectContentAre(String dropDownOptionToSelect) {
-        ssologinStepsCode.selectContentAreaOption((dropDownOptionToSelect));
-    }
+
 }
