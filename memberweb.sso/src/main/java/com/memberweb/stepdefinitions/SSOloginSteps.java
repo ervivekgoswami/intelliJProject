@@ -1,6 +1,7 @@
-package com.memberweb.stepDefinitions;
+package com.memberweb.stepdefinitions;
 
-import com.memberweb.testSteps.SSOloginStepsCode;
+import com.memberweb.teststeps.SSOloginStepsCode;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -10,7 +11,7 @@ public class SSOloginSteps {
 
     @Given("^User opens stackoverflow page \"([^\"]*)\"$")
     public void user_verifies_Test_harness_page_is_opened(String url) {
-        //ssologinStepsCode.openUrl(url);
+        ssologinStepsCode.openUrl(url);
         ssologinStepsCode.verifyUrlAndClickLogin(url);
     }
 

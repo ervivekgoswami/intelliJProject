@@ -3,15 +3,18 @@ package com.memberweb.utilities;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
-import org.apache.log4j.Logger;
 
+import java.io.File;
+import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 
 import com.memberweb.enums.Browsers;
-import com.memberweb.testBase.BrowserInitialization;
+import com.memberweb.testbase.BrowserInitialization;
 
 public class Hooks {
 
@@ -28,14 +31,21 @@ Logger log = LoggerHelper.getLogger(Hooks.class);
     }
 
     @After
-    public void endTest(Scenario scenario) {
+    public void endTest(Scenario scenario) throws IOException {
         System.out.println("Running After Hook");
         if (scenario.isFailed()) {
 
             try {
                 log.info(scenario.getName() + " is Failed");
-                final byte[] screenshot = ((TakesScreenshot) browserInit.driver).getScreenshotAs(OutputType.BYTES);
-                scenario.attach(screenshot, "", "image/png"); // ... and embed it in
+                byte[] screenshot = ((TakesScreenshot) browserInit.driver).getScreenshotAs(OutputType.BYTES);
+                TakesScreenshot screen = (TakesScreenshot) browserInit.driver;
+                File src = screen.getScreenshotAs(OutputType.FILE);
+                String localRepoPath = System.getProperty("user.dir") + "/src/test/resources/drivers";
+				FileUtils.copyFile(src,new File(localRepoPath ));
+                String html = "<html><body><a href=\">" + localRepoPath + "\"> screenshot </a></body></html>";
+                scenario.attach(html.getBytes(),"", "text/html");
+                
+                //scenario.attach(screenshot, "", "image/png"); // ... and embed it in
             } catch (WebDriverException e) {
                 e.printStackTrace();
             }

@@ -48,6 +48,12 @@
 			<scope>compile</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-picocontainer</artifactId>
+			<version>4.2.6</version>
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/net.masterthought/maven-cucumber-reporting -->
 		<dependency>
 			<groupId>net.masterthought</groupId>
@@ -107,7 +113,7 @@
 							<skip>false</skip>
 							<buildNumber>1</buildNumber>
 							<outputDirectory>${project.build.directory}</outputDirectory>
-							<inputDirectory>${project.build.directory}</inputDirectory>
+							<inputDirectory>${project.build.directory}/cucumber-reports</inputDirectory>
 							<checkBuildResult>true</checkBuildResult>
 							<jsonFiles>
 								<mergeFeaturesWithRetest>true</mergeFeaturesWithRetest>

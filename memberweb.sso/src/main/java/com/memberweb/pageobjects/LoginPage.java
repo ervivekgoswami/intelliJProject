@@ -1,4 +1,4 @@
-package com.memberweb.pageObjects;
+package com.memberweb.pageobjects;
 
 import com.memberweb.utilities.WaitHelper;
 import org.openqa.selenium.WebDriver;

@@ -1,9 +1,9 @@
 
-package com.memberweb.testSteps;
+package com.memberweb.teststeps;
 import org.openqa.selenium.WebDriver;
 
-import com.memberweb.pageObjects.LoginPage;
-import com.memberweb.testBase.BrowserInitialization;
+import com.memberweb.pageobjects.LoginPage;
+import com.memberweb.testbase.BrowserInitialization;
 import com.memberweb.utilities.WebActions;
 import com.memberweb.utilities.Hooks;
 import com.memberweb.utilities.WaitHelper;

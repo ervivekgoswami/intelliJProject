@@ -1,4 +1,4 @@
-package com.memberweb.testBase;
+package com.memberweb.testbase;
 
 import com.memberweb.enums.Browsers;
 import com.memberweb.enums.OS;
@@ -19,7 +19,7 @@ public class BrowserInitialization {
                 System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/test/resources/drivers/chromedriver.exe");
                 driver = new ChromeDriver();
                 driver.manage().window().maximize();
-                driver.get(url);
+                //driver.get(url);
             } else if (browser.equalsIgnoreCase(Browsers.FIREFOX.name())) {
                 System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "/src/test/resources/drivers/geckodriver.exe");
                 driver = new FirefoxDriver();
